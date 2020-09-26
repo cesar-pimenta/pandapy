@@ -1,12 +1,14 @@
 from pathlib import Path
+from decouple import config
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = '8g=gy#yib@fw9l_ghlm4#z%fl7mi$)l3!q_7+pzi8^it+*9=ea'
+SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '34.68.122.29']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -15,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'contact',
     'web_site',
 ]
 
@@ -80,4 +83,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

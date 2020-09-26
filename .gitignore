@@ -141,5 +141,7 @@ cython_debug/
 .vscode
 
 # DB local
-
 database.db
+
+# Media
+media
